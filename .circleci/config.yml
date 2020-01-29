@@ -3,6 +3,16 @@ jobs:
   build:
     docker:
       - image: circleci/node:10
+    branches:
+      only:
+        - master
     steps:
+      - checkout
       - run: echo "A first hello"
       - run: npm -v
+      - run:
+          name: Install
+          command: yarn install
+      - run:
+          name: Build
+          command: yarn build
